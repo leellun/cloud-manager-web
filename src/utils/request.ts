@@ -94,16 +94,16 @@ const getToken = () => {
   const userStore = useUserStore();
   return userStore.token;
 };
-export const httpRequest = <T = any, R = AxiosResponse<T>, D = any>(
+export const httpRequest = <R = AxiosResponse<any>, D = any>(
   config: AxiosRequestConfig<D>
 ) => {
-  return service<T, RestResponse<R>>(config);
+  return service<any, RestResponse<R>>(config);
 };
-export const httpRequestWithMsg = <T = any, R = AxiosResponse<T>, D = any>(
+export const httpRequestWithMsg = <R = AxiosResponse<any>, D = any>(
   config: AxiosRequestConfig<D>
 ) => {
   return new Promise<RestResponse<R>>((resolve, reject) => {
-    let promise = service<T, RestResponse<R>>(config);
+    let promise = service<any, RestResponse<R>>(config);
     promise
       .then((res) => {
         message.success(res.message);
